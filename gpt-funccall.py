@@ -25,7 +25,7 @@ def chat(msg):
     response = openai.ChatCompletion.create(
         model=DEFAULT_MODEL_NAME,
         messages=[{"role": "user", "content": msg}],
-        # temperature=0.2,
+        temperature=0.2,
         top_p=0.2,
         functions=[
             {
