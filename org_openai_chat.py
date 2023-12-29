@@ -1,15 +1,21 @@
 #Note: The openai-python library support for Azure OpenAI is in preview.
 import os
-import openai
+# import openai
+from openai import OpenAI
 import openaiapikey
 
 # openai.api_type = openaiapikey.azure_api_type
 # openai.api_base = openaiapikey.azure_api_base
 # openai.api_version = openaiapikey.azure_api_version
 # openai.api_key = openaiapikey.azure_api_key
-openai.api_key = openaiapikey.secret_api_key
+# openai.api_key = openaiapikey.secret_api_key
 
-response = openai.ChatCompletion.create(
+client = OpenAI(
+    api_key=openaiapikey.secret_api_key
+    )
+
+# response = openai.ChatCompletion.create(
+response = client.chat.completions.create(
   # engine=openaiapikey.azure_api_engine,
   model="gpt-3.5-turbo",
   messages = [{"role":"system","content":"You are an AI assistant that helps people find information."},
@@ -21,4 +27,5 @@ response = openai.ChatCompletion.create(
   presence_penalty=0,
   stop=None)
 
-print(response.choices[0].message['content'].strip())
+# print(response.choices[0].message['content'].strip())
+print(response.choices[0].message.content)

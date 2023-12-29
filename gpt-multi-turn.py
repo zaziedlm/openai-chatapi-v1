@@ -1,17 +1,24 @@
-import openai
+#import openai
+from openai import OpenAI
 import openaiapikey
 import json
 
 # APIキーを設定
 # 個別モジュール openaiapikey で、secret_api_key に、OpenAI API KEY をセットしてある 
-openai.api_key = openaiapikey.secret_api_key
+#openai.api_key = openaiapikey.secret_api_key
+
+client = OpenAI(
+    api_key = openaiapikey.secret_api_key,
+)
+
 
 def generate_conv(prompt, role, conversation_history):
     # ユーザーの質問を会話履歴に追加
     conversation_history.append({"role": "user", "content": prompt})
     
     # GPTモデルを使用してテキストを生成
-    response = openai.ChatCompletion.create(
+    #response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo-0613",
         #model="gpt-4-0613",
         messages=[{"role": "system", "content": f"You are a {role}."}] + conversation_history,
@@ -19,7 +26,8 @@ def generate_conv(prompt, role, conversation_history):
         n=1,
         temperature=0.8,
     )
-    message = response.choices[0].message['content'].strip()
+    #message = response.choices[0].message['content'].strip()
+    message = response.choices[0].message.content
     
     # アシスタントの回答を会話履歴に追加
     conversation_history.append({"role": "assistant", "content": message})
