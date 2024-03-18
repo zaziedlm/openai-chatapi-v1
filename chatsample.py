@@ -19,9 +19,13 @@ prompt = "Q:" + question + "\nA:"
 
 # 推論
 #response = openai.Completion.create(
-response = client.completions.create(
-  model="text-davinci-003",
-  prompt=prompt,
+#response = client.completions.create(
+response = client.chat.completions.create(
+  # model="text-davinci-003",
+  model="gpt-3.5-turbo",
+  # prompt=prompt,
+  messages = [{"role":"system","content":"You are an AI assistant that helps people find information."},
+              {"role":"user","content": prompt}],
   temperature=0.2,
   max_tokens=100,
   top_p=1,
@@ -31,5 +35,7 @@ response = client.completions.create(
 
 # 回答
 #answer = response['choices'][0]['text']
-answer = response.choices[0].text
+# answer = response.choices[0].text
+answer = response.choices[0].message.content
 print(answer)
+print(response)
