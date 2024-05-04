@@ -16,7 +16,8 @@ os.environ["OPENAI_API_KEY"] = openaiapikey.secret_api_key
 
 #llm = OpenAI(model_name="gpt-3.5-turbo-0613")
 # OpenAIのモデルのインスタンスを作成
-llm = OpenAI(model_name="text-davinci-003")
+#llm = OpenAI(model_name="text-davinci-003")
+llm = OpenAI(model_name="gpt-3.5-turbo-instruct")
 
 # プロンプトのテンプレート文章を定義
 template = """
