@@ -22,7 +22,9 @@ prompt = "Q:" + question + "\nA:"
 #response = client.completions.create(
 response = client.chat.completions.create(
   # model="text-davinci-003",
-  model="gpt-3.5-turbo",
+  #model="gpt-3.5-turbo",
+  #model="gpt-4-turbo",
+  model="gpt-4o",
   # prompt=prompt,
   messages = [{"role":"system","content":"You are an AI assistant that helps people find information."},
               {"role":"user","content": prompt}],
