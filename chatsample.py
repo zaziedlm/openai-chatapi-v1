@@ -29,11 +29,12 @@ response = client.chat.completions.create(
   messages = [{"role":"system","content":"You are an AI assistant that helps people find information."},
               {"role":"user","content": prompt}],
   temperature=0.2,
-  max_tokens=100,
+  max_tokens=512,
   top_p=1,
   frequency_penalty=0.0,
   presence_penalty=0.0,
-  stop=["\n"])
+  #stop=["\n"]
+  )
 
 # 回答
 #answer = response['choices'][0]['text']
