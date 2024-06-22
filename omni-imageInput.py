@@ -50,7 +50,7 @@ def send_request_to_azure_openai(messages):
 # メイン関数
 def main():
     # PNGファイルのパスを指定
-    file_path = './data/pr_20240418-2.png'
+    file_path = './data2/pr_20240418-2.png'
 
     # ファイルをバイナリモードで開いて読み込む
     with open(file_path, 'rb') as image_file:
