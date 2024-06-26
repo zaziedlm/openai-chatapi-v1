@@ -11,7 +11,7 @@ client = OpenAI(
     api_key=openaiapikey.secret_api_key,
     )
 
-DEFAULT_MODEL_NAME = "gpt-3.5-turbo-0613"
+DEFAULT_MODEL_NAME = "gpt-3.5-turbo"
 
 def unmatch_value(input_num):
     if not input_num:

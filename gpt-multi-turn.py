@@ -19,7 +19,7 @@ def generate_conv(prompt, role, conversation_history):
     # GPTモデルを使用してテキストを生成
     #response = openai.ChatCompletion.create(
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-0613",
+        model="gpt-3.5-turbo",
         #model="gpt-4-0613",
         messages=[{"role": "system", "content": f"You are a {role}."}] + conversation_history,
         max_tokens=1024,
